@@ -1,17 +1,26 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-if(!fs.existsSync(path.join(process.cwd(), 'config.json'))) {
+// check if has a argument
+let baseConfigPath;
+
+if(process.argv.length < 3) {
+    baseConfigPath = path.resolve(process.cwd());
+} else {
+    baseConfigPath = path.resolve(process.argv[2]);
+}
+
+if(!fs.existsSync(path.join(baseConfigPath, 'config.json'))) {
     console.error('config.json not found!');
     process.exit();
 }
 
-if(!fs.existsSync(path.join(process.cwd(), 'symbols.txt'))) {
+if(!fs.existsSync(path.join(baseConfigPath, 'symbols.txt'))) {
     console.error('symbols.txt not found!');
     process.exit();
 }
 
-const config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'config.json'), 'utf-8'));
+const config = JSON.parse(fs.readFileSync(path.join(baseConfigPath, 'config.json'), 'utf-8'));
 
 export const START_DATE = (() => {
     const mode = config.dates.profile;
@@ -43,7 +52,7 @@ export const END_DATE = (() => {
     }
 })();
 
-export const outputDir = path.join(process.cwd(), config.outputDir);
+export const outputDir = path.join(baseConfigPath, config.outputDir);
 
 export const toProcess = config.profiles[config.mode] as {
     outTemplate: string,
@@ -56,5 +65,5 @@ if(!toProcess) {
     process.exit();
 }
 
-export const SYMBOLS = fs.readFileSync(path.join(process.cwd(), 'symbols.txt'), 'utf-8').split('\r\n');
-export const AGENTS = fs.readFileSync(path.join(process.cwd(), 'agents.txt'), 'utf-8').split('\r\n');
+export const SYMBOLS = fs.readFileSync(path.join(baseConfigPath, 'symbols.txt'), 'utf-8').split('\r\n');
+export const AGENTS = fs.readFileSync(path.join(baseConfigPath, 'agents.txt'), 'utf-8').split('\r\n');

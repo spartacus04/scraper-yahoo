@@ -108,6 +108,8 @@ const fetchPromise = async (url: string, outTemplate: string, customErrorMessage
 
 (async () => {
     console.log('You have 10 seconds to stop the script if you want to change the configuration...');
+    console.log('Press CTRL + C to stop the script at any time...')
+
     await wait(10000);
 
     if(!fs.existsSync(outputDir)) {

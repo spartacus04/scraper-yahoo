@@ -132,8 +132,7 @@ Questo file contiene le impostazioni di configurazione per il programma. Deve es
       - `years`: Numero di anni di differenza dalla data attuale.
       - `months`: Numero di mesi di differenza dalla data attuale.
       - `days`: Numero di giorni di differenza dalla data attuale.
-
-	- `setDates`: Utilizza date fisse.
+    - `setDates`: Utilizza date fisse.
       - `type`: Tipo di date, in questo caso `set`.
       - `startDate`: Data di inizio del periodo di scaricamento nel formato `YYYY-MM-DD`.
       - `endDate`: Data di fine del periodo di scaricamento nel formato `YYYY-MM-DD`.
@@ -146,16 +145,17 @@ Questo file contiene le impostazioni di configurazione per il programma. Deve es
 - `outTemplate`: Template per il nome del file di output.
 - `baseUrl`: URL base per il download di tutti i dati.
 - `customErrorMessages`: Lista di messaggi di errore personalizzati per identificare risposte HTML non valide.
+
 ## Utilizzo del Programma
 1. Creare un file `symbols.txt` con la lista dei simboli desiderati.
 2. Creare un file `config.json` con le impostazioni di configurazione.
 3. Creare un file `agents.txt` con la lista degli user agents.
-4. Eseguire l'eseguibile `.exe`.
+4. Eseguire l'eseguibile `.exe`, specificando la cartella base dei file di configurazione come argomento da riga di comando.
 
 ### Esempio di Esecuzione
-Doppio click sull'eseguibile `scarica_dati.exe` o eseguirlo tramite il prompt dei comandi:
+Doppio click sull'eseguibile `scarica_dati.exe` o eseguirlo tramite il prompt dei comandi, specificando la cartella base dei file di configurazione:
 ```bash
-yahoo_downloader.exe
+yahoo_downloader.exe C:\path\to\config\directory
 ```
 
 ## Note
