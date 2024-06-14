@@ -25,7 +25,7 @@ export const fetchProxies = async () => {
                     signal: controller.signal
                 }
             ).then(res => res.status).catch(() => 400);
-            
+
             const end = Date.now();
             const timeout = end - start;
 
@@ -46,4 +46,4 @@ export const filterProxies = (proxies: { [key: string]: { statusCode: number, ti
     okProxies.sort((a, b) => proxies[a].timeout - proxies[b].timeout);
 
     return okProxies;
-}
+};

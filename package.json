@@ -4,13 +4,15 @@
   "bin": "dist/index.js",
   "devDependencies": {
     "@types/bun": "latest",
+    "nexe": "^4.0.0-rc.6",
     "pkg": "^5.8.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "build": "tsc && pkg . --target latest-win-x64 --output output/yahoo_downloader",
+    "build:pkg": "tsc && pkg . --target latest-win-x64 --output output/yahoo_downloader",
+    "build": "tsc && nexe -t windows-windows-x64-21.0.0 --build --verbose -o output/yahoo_downloader dist/index.js",
     "build:bun": "bun build --compile --target=bun-windows-x64-baseline ./src/index.ts --outfile output/yahoo_downloader"
   }
 }
