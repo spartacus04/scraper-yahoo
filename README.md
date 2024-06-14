@@ -4,7 +4,6 @@
 Questo programma consente di scaricare dati finanziari da Yahoo Finance utilizzando dei proxy. Il programma richiede tre file di configurazione: `symbols.txt`, `config.json` e `agents.txt`. Il programma è fornito come eseguibile `.exe`.
 
 ## Requisiti
-- Windows OS
 - File `symbols.txt` contenente la lista dei simboli da scaricare
 - File `config.json` con la configurazione delle operazioni di scaricamento
 - File `agents.txt` con la lista di user agents da utilizzare per le richieste
