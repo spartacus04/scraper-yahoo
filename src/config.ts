@@ -52,7 +52,7 @@ export const END_DATE = (() => {
     }
 })();
 
-export const outputDir = path.join(baseConfigPath, config.outputDir);
+export const outputDir = path.resolve(config.outputDir);
 
 export const toProcess = config.profiles[config.mode] as {
     outTemplate: string,
