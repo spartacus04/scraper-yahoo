@@ -6,10 +6,12 @@ const controller = new AbortController();
 
 export const fetchProxies = async () => {
     return await new Promise<{ [key: string]: { statusCode: number, timeout: number } }>(async (resolve) => {
-        console.log('Fetching proxies... (will take about 2 minutes)');
+        console.log('Fetching proxies...');
         const data = await fetch(proxyEndPoint);
 
         const proxies = (await data.text()).split('\r\n').filter(proxy => proxy != '');
+
+        console.log(`Fetched ${proxies.length} proxies! Testing them... (will take about 2 minutes)`);
 
         const fetchedProxies : { [key: string]: { statusCode: number, timeout: number } } = {};
 
