@@ -31,6 +31,8 @@ jobs:
           
       - name: Attach artifact to release
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: output/yahoo_downloader.exe
