@@ -1,0 +1,16 @@
+{
+  "name": "scraper-yahoo",
+  "module": "index.ts",
+  "bin": "dist/index.js",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "pkg": "^5.8.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsc && pkg . --target latest-win-x64 --output output/yahoo_downloader",
+    "build:bun": "bun build --compile --target=bun-windows-x64-baseline ./src/index.ts --outfile output/yahoo_downloader"
+  }
+}

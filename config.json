@@ -1,0 +1,88 @@
+{
+    "dates": {
+        "profile": "auto",
+
+        "profiles": {
+
+            "auto": {
+                "type": "diff",
+                "years": 2,
+                "months": 6,
+                "days": 0
+            },
+
+            "setDates": {
+                "type": "set",
+                "startDate": "2023-06-01",
+                "endDate": "2023-12-31"
+            }
+        }
+    },
+
+    "outputDir": "data",
+    "mode": "fondamentali",
+    "profiles": {
+        "storico": [
+            {
+                "outTemplate": "${symbol}.txt",
+                "baseUrl": "https://query1.finance.yahoo.com/v7/finance/download/${symbol}?period1=${START_DATE}&period2=${END_DATE}&interval=1d&events=history&includeAdjustedClose=true",
+                "customErrorMessages": [
+                    "<!DOCTYPE html>",
+                    "<html>"
+                ]
+            }
+        ],
+        "fondamentali": [
+            {
+                "outTemplate": "summary_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}"
+            },
+            {
+                "outTemplate": "profile_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/profile"
+            },
+            {
+                "outTemplate": "statistics_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/key-statistics"
+            },
+            {
+                "outTemplate": "financials_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/financials"
+            },
+            {
+                "outTemplate": "analysis_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/analysis"
+            }
+        ],
+        "all": [
+            {
+                "outTemplate": "${symbol}.txt",
+                "baseUrl": "https://query1.finance.yahoo.com/v7/finance/download/${symbol}?period1=${START_DATE}&period2=${END_DATE}&interval=1d&events=history&includeAdjustedClose=true",
+                "customErrorMessages": [
+                    "<!DOCTYPE html>",
+                    "<html>"
+                ]
+            },
+            {
+                "outTemplate": "summary_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}"
+            },
+            {
+                "outTemplate": "profile_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/profile"
+            },
+            {
+                "outTemplate": "statistics_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/key-statistics"
+            },
+            {
+                "outTemplate": "financials_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/financials"
+            },
+            {
+                "outTemplate": "analysis_${symbol}.txt",
+                "baseUrl": "https://finance.yahoo.com/quote/${symbol}/analysis"
+            }
+        ]
+    }
+}
