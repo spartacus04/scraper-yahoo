@@ -29,3 +29,10 @@ jobs:
           name: yahoo_downloader.exe
           path: output/yahoo_downloader.exe
           
+      - name: Attach artifact to release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: output/yahoo_downloader.exe
+          asset_name: yahoo_downloader.exe
+          asset_content_type: application/octet-stream
