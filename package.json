@@ -11,8 +11,11 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "build:pkg": "tsc && pkg . --target latest-win-x64 --output output/yahoo_downloader",
-    "build": "tsc && nexe -t windows-windows-x64-21.0.0 --build --verbose -o output/yahoo_downloader dist/index.js",
+    "build:pkg": "tsc && pkg . --target latest-win-x86 --output output/yahoo_downloader",
+    "build": "tsc && nexe -t windows-x86-18.20.3 --build --verbose -o output/yahoo_downloader dist/index.js",
     "build:bun": "bun build --compile --target=bun-windows-x64-baseline ./src/index.ts --outfile output/yahoo_downloader"
+  },
+  "dependencies": {
+    "undici": "^6.19.0"
   }
 }

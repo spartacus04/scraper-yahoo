@@ -1,6 +1,7 @@
 import { AGENTS, END_DATE, START_DATE, SYMBOLS, outputDir, toProcess } from './config';
-import fs from 'node:fs';
 import { filterProxies, fetchProxies } from './proxy';
+import { fetch, ProxyAgent } from 'undici';
+import fs from 'node:fs';
 
 const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
@@ -21,7 +22,6 @@ const fetchPromise = async (url: string, outTemplate: string, customErrorMessage
     let proxies = filterProxies(await fetchProxies());
 
     let totalProxies = proxies.length;
-    let proxyCount = totalProxies;
 
     const symbols = Array.from(SYMBOLS);
     const totalSymbols = symbols.length;
@@ -42,7 +42,7 @@ const fetchPromise = async (url: string, outTemplate: string, customErrorMessage
                         const data = await fetch(
                             new URL(url.replace('${symbol}', symbol).replace('${START_DATE}', START_DATE.toString()).replace('${END_DATE}', END_DATE.toString())),
                             {
-                                proxy,
+                                dispatcher: new ProxyAgent(proxy),
                                 headers: {
                                     'User-Agent': AGENTS[Math.floor(Math.random() * AGENTS.length)]
                                 }
@@ -90,7 +90,6 @@ const fetchPromise = async (url: string, outTemplate: string, customErrorMessage
                             proxies = filterProxies(await fetchProxies());
     
                             totalProxies = proxies.length;
-                            proxyCount = totalProxies;
 
                             console.log(`Found ${proxies.length} proxies!`);
                         }

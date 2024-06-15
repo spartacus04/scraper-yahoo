@@ -1,3 +1,5 @@
+import { fetch, ProxyAgent } from 'undici';
+
 const timeLimit = 120000;
 
 const proxyEndPoint = 'https://api.proxyscrape.com/v3/free-proxy-list/get?request=displayproxies&protocol=http&proxy_format=protocolipport&format=text&timeout=10000';
@@ -21,7 +23,7 @@ export const fetchProxies = async () => {
             const statusCode = await fetch(
                 "https://api.ipify.org",
                 {
-                    proxy: url,
+                    dispatcher: new ProxyAgent(url),
                     signal: controller.signal
                 }
             ).then(res => res.status).catch(() => 400);
