@@ -77,7 +77,13 @@ const fetchPromise = async (url: string, outTemplate: string, customErrorMessage
                         await wait(3000);
     
                         proxies.push(proxy);
-                    } catch(e) {
+                    } catch(e : any) {
+                        // handle econnreset
+                        if(e.code == 'ECONNRESET') {
+                            totalProxies++;
+                            proxies.push(proxy);
+                        }
+
                         console.log(e);
                         console.log(`[${proxy}]Error downloading ${symbol}, trying later...`);
                         symbols.push(symbol!!);

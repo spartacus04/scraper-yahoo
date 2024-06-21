@@ -41,7 +41,7 @@ export const fetchProxies = async () => {
             resolve(fetchedProxies)
         }, timeLimit);
     });
-}
+};
 
 export const filterProxies = (proxies: { [key: string]: { statusCode: number, timeout: number } }) => {
     const okProxies = Object.keys(proxies).filter(proxy => proxies[proxy].statusCode == 200);
